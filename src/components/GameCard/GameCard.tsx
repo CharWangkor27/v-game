@@ -1,5 +1,6 @@
 import type { Game } from "@/hooks/useGames"
 import { Card, CardBody, Heading, Image } from "@chakra-ui/react"
+import CriticScore from "../CiticScore/CriticScore"
 
 
 
@@ -9,11 +10,13 @@ interface Props{
 
 const GameCard = ({game}:Props) => {
   return(
-    <Card.Root borderRadius={10} overflow="hidden">
+    <Card.Root gap ="2" borderRadius={10} overflow="hidden" width="300px" >
         <Image src={game.background_image}/>
         <CardBody>
             <Heading>{game.name}</Heading>
-            </CardBody>
+            <CriticScore score = {game.metacritic}/>
+        </CardBody>
+            
     </Card.Root>
   )
 }
