@@ -5,15 +5,15 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
 import GameCardContainer from "../GameCardContainer/GameCardContainer";
-import type { Category } from "@/hooks/useCategories";
+import type { BookQuery } from "@/App";
 
 interface Props{
-  selectedCategory: Category | null;
+  bookQuery:BookQuery 
 }
 
 
-const GameGrid = ({selectedCategory}:Props) => {
-    const {data, error, isLoading} = useGames(selectedCategory)
+const GameGrid = ({bookQuery}:Props) => {
+    const {data, error, isLoading} = useGames(bookQuery)
     const skeletons = [1,2,3,4,5,6];
   return (
     <>
