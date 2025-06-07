@@ -1,8 +1,12 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react"
-import useCategories from "../../hooks/useCategories"
+import { Button, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react"
+import useCategories, { type Category } from "../../hooks/useCategories"
 
+interface Props{
+  onSelectCategory:(category:Category)=>void;
+  selectedCategory: Category | null;
+}
 
-const Categories = () => {
+const Categories = ({selectedCategory,onSelectCategory}:Props) => {
     const {data, isLoading, error} = useCategories()
     if(error) return null;
     if(isLoading) return <Spinner/>
@@ -12,8 +16,8 @@ const Categories = () => {
         "none">
           <HStack>
             <Image boxSize="32px" borderRadius="10px" src={category.image_background}/>
-            <Text fontSize="lg">{category.name}
-            </Text>
+            <Button fontSize="lg" variant='ghost' fontWeight={category.id==selectedCategory?.id?'bold':'normal'} onClick={()=>onSelectCategory(category)}>{category.name}
+            </Button>
           </HStack>
            </ListItem>)}
     </List.Root>

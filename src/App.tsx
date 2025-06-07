@@ -3,10 +3,14 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { NavBar } from './components/navbar/NavBar'
 import GameGrid from './components/GameGrid/GameGrid'
 import Categories from './components/Category/Categories'
+import { useState } from 'react'
+import type { Category } from './hooks/useCategories'
 
 
 
 function App() {
+
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   
 
   return <Grid templateAreas={{
@@ -26,11 +30,11 @@ function App() {
     
 
     <GridItem area="aside"display={{base:'none' , lg:'block'}} paddingX={5}>
-      <Categories/>
+      <Categories selectedCategory={selectedCategory} onSelectCategory={category=>setSelectedCategory(category)}/>
     </GridItem>
   
    
-    <GridItem area="main"><GameGrid/></GridItem>
+    <GridItem area="main"><GameGrid selectedCategory={selectedCategory}/></GridItem>
   </Grid>
 }
 
