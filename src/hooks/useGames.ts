@@ -7,13 +7,13 @@ export interface Game{
   name: string;
   background_image:string;
   metacritic : number;
-  
 };
 
 const useGames = (bookQuery:BookQuery) => useData<Game>('/games',
   {params:{
     genres:bookQuery.category?.id,
-    ordering:bookQuery.sortOder
+    ordering:bookQuery.sortOder,
+    search: bookQuery.searchText
   },
 },[bookQuery],
   

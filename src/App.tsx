@@ -11,6 +11,7 @@ import SortSelector from './components/SortSelector/SortSelector'
 export interface BookQuery{
   category : Category | null;
   sortOder : string;
+  searchText: string;
 }
 
 
@@ -31,7 +32,7 @@ function App() {
   } 
     >
     <GridItem area="nav" bg="maroon">
-     <NavBar/>
+     <NavBar onSearch={(searchText)=>setBookQuery({...bookQuery,searchText})}/>
     </GridItem>
     
 
