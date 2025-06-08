@@ -1,0 +1,14 @@
+diff --git a/node_modules/@zag-js/toast/dist/index.d.mts b/node_modules/@zag-js/toast/dist/index.d.mts
+index feaa441..374a56e 100644
+--- a/node_modules/@zag-js/toast/dist/index.d.mts
++++ b/node_modules/@zag-js/toast/dist/index.d.mts
+@@ -89,7 +89,8 @@ interface ToastProps<T = any> extends Omit<CommonProperties, "id">, Options<T> {
+      */
+     gap?: number;
+ }
+-type ToastPropsWithDefault = "type" | "parent" | "duration" | "id" | "removeDelay";
++type ToastPropsWithDefault = "type" | "duration" | "id" | "removeDelay";
++
+ type ToastSchema<O = any> = {
+     props: RequiredBy<ToastProps<O>, ToastPropsWithDefault>;
+     context: {
