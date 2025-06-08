@@ -11,12 +11,12 @@ const Categories = ({selectedCategory,onSelectCategory}:Props) => {
     if(error) return null;
     if(isLoading) return <Spinner/>
   return (
-    <List.Root>
+    <List.Root paddingRight={5}>
         {data.map(category=><ListItem key={category.id} paddingY='5px' listStyle=
         "none">
           <HStack>
-            <Image boxSize="32px" borderRadius="10px" src={category.image_background}/>
-            <Button fontSize="lg" variant='ghost' fontWeight={category.id==selectedCategory?.id?'bold':'normal'} onClick={()=>onSelectCategory(category)}>{category.name}
+            <Image objectFit='cover' boxSize="32px" borderRadius="10px" src={category.image_background}/>
+            <Button  width='100%' whiteSpace='normal' justifyContent='flex-start' fontSize="lg" variant='ghost' fontWeight={category.id==selectedCategory?.id?'bold':'normal'} onClick={()=>onSelectCategory(category)}>{category.name}
             </Button>
           </HStack>
            </ListItem>)}

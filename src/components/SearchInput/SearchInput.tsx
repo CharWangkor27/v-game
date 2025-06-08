@@ -12,7 +12,7 @@ const SearchInput = ({onSearch}:Props) => {
   
   return (
     
-    <form style={{width:'100%', margin:'3px'}} onSubmit={(event)=>{
+    <form style={{ margin:'3px'}} onSubmit={(event)=>{
       event.preventDefault()
       if (ref.current) onSearch(ref.current.value);
     }}>

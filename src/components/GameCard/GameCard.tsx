@@ -1,5 +1,5 @@
 import type { Game } from "@/hooks/useGames"
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react"
+import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react"
 import CriticScore from "../CiticScore/CriticScore"
 
 
@@ -13,8 +13,11 @@ const GameCard = ({game}:Props) => {
     <Card.Root>
         <Image src={game.background_image}/>
         <CardBody>
+          <HStack>
             <Heading>{game.name}</Heading>
             <CriticScore score = {game.metacritic}/>
+          </HStack>
+            
         </CardBody>
             
     </Card.Root>

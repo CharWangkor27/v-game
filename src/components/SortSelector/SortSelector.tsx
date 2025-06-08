@@ -1,5 +1,5 @@
 import { Button, Menu, Portal, } from "@chakra-ui/react"
-import { HiSortDescending } from "react-icons/hi";
+import { LuArrowDown } from "react-icons/lu";
 
 interface Props{
     OnSelectSortOrder :(sortOrder:string)=>void;
@@ -19,10 +19,10 @@ const SortSelector = ({OnSelectSortOrder,sortOrder}:Props) => {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant='plain'>
+        <Button variant='surface'>
 
            Sort: {currentSortOrder?currentSortOrder?.label:'Relecance'}
-           <HiSortDescending/>
+           <LuArrowDown/>
         </Button>
       </Menu.Trigger> 
       <Portal>

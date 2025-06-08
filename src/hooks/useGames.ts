@@ -7,6 +7,7 @@ export interface Game{
   name: string;
   background_image:string;
   metacritic : number;
+  rating_top: number;
 };
 
 const useGames = (bookQuery:BookQuery) => useData<Game>('/games',
