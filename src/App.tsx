@@ -3,7 +3,6 @@ import { Grid, GridItem, Heading, HStack} from '@chakra-ui/react'
 import { NavBar } from './components/navbar/NavBar'
 import Categories from './components/Category/Categories'
 import { useState } from 'react'
-import type { Category } from './hooks/useCategories'
 import SortSelector from './components/SortSelector/SortSelector'
 import BookHeading from './components/BookHeading/BookHeading'
 import BookGrid from './components/BookGrid/BookGrid'
@@ -11,7 +10,7 @@ import BookGrid from './components/BookGrid/BookGrid'
 
 
 export interface BookQuery{
-  category : Category | null;
+  categoryId? : number;
   sortOder : string;
   searchText: string;
 }
@@ -44,7 +43,7 @@ function App() {
 
     <GridItem marginTop={5} area="aside"display={{base:'none' , lg:'block'}} paddingX={5}>
       <Heading marginBottom ={3}as='h1' fontSize='3xl'>Categories</Heading>
-      <Categories selectedCategory={bookQuery.category} onSelectCategory={category=>setBookQuery({...bookQuery,category})}/>
+      <Categories selectedCategoryId={bookQuery.categoryId} onSelectCategory={category=>setBookQuery({...bookQuery,categoryId:category.id})}/>
     </GridItem>
    
    

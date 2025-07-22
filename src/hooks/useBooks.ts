@@ -20,7 +20,7 @@ const useBooks = (bookQuery: BookQuery) =>
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: bookQuery.category?.id,
+          genres: bookQuery.categoryId,
           ordering: bookQuery.sortOder,
           search: bookQuery.searchText,
           page: pageParam, 
