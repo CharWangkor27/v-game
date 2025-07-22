@@ -3,6 +3,7 @@ import type { BookQuery } from "@/App";
 import type { fetchResponse } from "../components/sevices/api-client";
 import {  useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../components/sevices/api-client";
+import ms from "ms";
 
 export interface Book{
   id: number;
@@ -26,6 +27,7 @@ const useBooks = (bookQuery: BookQuery) =>
           page: pageParam, 
         },
       }),
+      staleTime: ms('24h'),
     getNextPageParam: (lastPage, allPages) => {
      
       return lastPage.next ? allPages.length + 1 : undefined;
