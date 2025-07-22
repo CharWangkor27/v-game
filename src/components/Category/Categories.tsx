@@ -12,7 +12,7 @@ const Categories = ({selectedCategory,onSelectCategory}:Props) => {
     if(isLoading) return <Spinner/>
   return (
     <List.Root paddingRight={5}>
-        {data.map(category=><ListItem key={category.id} paddingY='5px' listStyle=
+        {data?.results.map(category=><ListItem key={category.id} paddingY='5px' listStyle=
         "none">
           <HStack>
             <Image objectFit='cover' boxSize="32px" borderRadius="10px" src={category.image_background}/>

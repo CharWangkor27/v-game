@@ -1,12 +1,12 @@
 
 import { Grid, GridItem, Heading, HStack} from '@chakra-ui/react'
 import { NavBar } from './components/navbar/NavBar'
-import GameGrid from './components/GameGrid/GameGrid'
 import Categories from './components/Category/Categories'
 import { useState } from 'react'
 import type { Category } from './hooks/useCategories'
 import SortSelector from './components/SortSelector/SortSelector'
 import BookHeading from './components/BookHeading/BookHeading'
+import BookGrid from './components/BookGrid/BookGrid'
 
 
 
@@ -54,7 +54,7 @@ function App() {
       <SortSelector sortOrder = {bookQuery.sortOder}OnSelectSortOrder={(sortOder)=>setBookQuery({...bookQuery,sortOder})}/>
      
     
-      <GameGrid bookQuery={bookQuery}/>
+      <BookGrid bookQuery={bookQuery}/>
     </GridItem>
   </Grid>
 }

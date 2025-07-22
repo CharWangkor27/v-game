@@ -1,21 +1,21 @@
-import type { Game } from "@/hooks/useGames"
+import type { Book } from "@/hooks/useBooks"
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react"
 import CriticScore from "../CiticScore/CriticScore"
 
 
 
 interface Props{
-    game:  Game
+    book:  Book
 }
 
-const GameCard = ({game}:Props) => {
+const GameCard = ({book}:Props) => {
   return(
     <Card.Root>
-        <Image src={game.background_image}/>
+        <Image src={book.background_image}/>
         <CardBody>
           <HStack>
-            <Heading>{game.name}</Heading>
-            <CriticScore score = {game.metacritic}/>
+            <Heading>{book.name}</Heading>
+            <CriticScore score = {book.metacritic}/>
           </HStack>
             
         </CardBody>
