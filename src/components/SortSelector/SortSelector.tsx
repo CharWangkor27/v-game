@@ -1,12 +1,10 @@
+import useBookQueryStore from "../../store";
 import { Button, Menu, Portal, } from "@chakra-ui/react"
 import { LuArrowDown } from "react-icons/lu";
 
-interface Props{
-    OnSelectSortOrder :(sortOrder:string)=>void;
-    sortOrder: string;
-}
 
-const SortSelector = ({OnSelectSortOrder,sortOrder}:Props) => {
+
+const SortSelector = () => {
     const sortOrders = [
         {value:'',label:'Relevance'},
         {value:'-added',label:'Date added'},
@@ -15,6 +13,9 @@ const SortSelector = ({OnSelectSortOrder,sortOrder}:Props) => {
         {value:'-metacritic',label:'Popularity'},
         {value:'-rating',label:'Average rating'}
     ];
+
+    const sortOrder = useBookQueryStore(s=>s.bookQuery.sortOrder);
+    const setSortOrder = useBookQueryStore(s=>s.setSortOrder)
     const currentSortOrder = sortOrders.find(order=>order.value===sortOrder);
   return (
     <Menu.Root>
@@ -30,7 +31,7 @@ const SortSelector = ({OnSelectSortOrder,sortOrder}:Props) => {
           <Menu.Content>
             {
                 sortOrders.map(item=><Menu.Item 
-                    onClick={()=>OnSelectSortOrder(item.value)}
+                    onClick={()=>setSortOrder(item.value)}
                     value={item.value} key={item.value}>{item.label}</Menu.Item>)
             }
           </Menu.Content>

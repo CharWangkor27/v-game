@@ -1,9 +1,9 @@
 
-import type { BookQuery } from "@/App";
 import type { fetchResponse } from "../components/sevices/api-client";
 import {  useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../components/sevices/api-client";
 import ms from "ms";
+import useBookQueryStore from "../store";
 
 export interface Book{
   id: number;
@@ -15,14 +15,16 @@ export interface Book{
 
 const apiClient = new APIClient<Book>('/games');
 
-const useBooks = (bookQuery: BookQuery) =>
-  useInfiniteQuery<fetchResponse<Book>, Error>({
+const useBooks = () =>
+{
+  const bookQuery = useBookQueryStore(s=>s.bookQuery)
+  return useInfiniteQuery<fetchResponse<Book>, Error>({
     queryKey: ['games', bookQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
           genres: bookQuery.categoryId,
-          ordering: bookQuery.sortOder,
+          ordering: bookQuery.sortOrder,
           search: bookQuery.searchText,
           page: pageParam, 
         },
@@ -35,5 +37,6 @@ const useBooks = (bookQuery: BookQuery) =>
     initialPageParam: 1, 
   });
     
+}
 
 export default useBooks

@@ -2,23 +2,16 @@
 import { Grid, GridItem, Heading, HStack} from '@chakra-ui/react'
 import { NavBar } from './components/navbar/NavBar'
 import Categories from './components/Category/Categories'
-import { useState } from 'react'
 import SortSelector from './components/SortSelector/SortSelector'
 import BookHeading from './components/BookHeading/BookHeading'
 import BookGrid from './components/BookGrid/BookGrid'
 
 
 
-export interface BookQuery{
-  categoryId? : number;
-  sortOder : string;
-  searchText: string;
-}
+
 
 
 function App() {
-
-  const [bookQuery, setBookQuery]= useState<BookQuery>({}as BookQuery)
   
 
   return <Grid templateAreas={{
@@ -35,7 +28,7 @@ function App() {
     <GridItem area="nav">
       
      <HStack>
-      <NavBar onSearch={(searchText)=>setBookQuery({...bookQuery,searchText})}/>
+      <NavBar/>
 
      </HStack>
     </GridItem>
@@ -43,17 +36,17 @@ function App() {
 
     <GridItem marginTop={5} area="aside"display={{base:'none' , lg:'block'}} paddingX={5}>
       <Heading marginBottom ={3}as='h1' fontSize='3xl'>Categories</Heading>
-      <Categories selectedCategoryId={bookQuery.categoryId} onSelectCategory={category=>setBookQuery({...bookQuery,categoryId:category.id})}/>
+      <Categories/>
     </GridItem>
    
    
     <GridItem area="main" marginTop={5}>
       
-      <BookHeading bookQuery={bookQuery}/>
-      <SortSelector sortOrder = {bookQuery.sortOder}OnSelectSortOrder={(sortOder)=>setBookQuery({...bookQuery,sortOder})}/>
+      <BookHeading/>
+      <SortSelector/>
      
     
-      <BookGrid bookQuery={bookQuery}/>
+      <BookGrid/>
     </GridItem>
   </Grid>
 }

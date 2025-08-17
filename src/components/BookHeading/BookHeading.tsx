@@ -1,12 +1,12 @@
-import type { BookQuery } from "@/App"
+
 import { Heading } from "@chakra-ui/react"
 import useCategory from "../../hooks/useCategory";
-interface Props{
-    bookQuery: BookQuery;
-}
+import useBookQueryStore from "../../store";
 
-const BookHeading = ({bookQuery}:Props) => {
-  const category = useCategory(bookQuery.categoryId)
+
+const BookHeading = () => {
+  const categoryId = useBookQueryStore(s=>s.bookQuery.categoryId)
+  const category = useCategory(categoryId)
     const heading = `${category?.name || ''}  Books`
   return (
     <Heading as='h1' marginY={5} fontSize='5xl'>{heading}</Heading>

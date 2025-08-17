@@ -1,13 +1,13 @@
 import { Button, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react"
-import useCategories, { type Category } from "../../hooks/useCategories"
+import useCategories from "../../hooks/useCategories"
+import useBookQueryStore from "../../store"
 
-interface Props{
-  onSelectCategory:(category:Category)=>void;
-  selectedCategoryId?: number;
-}
 
-const Categories = ({selectedCategoryId,onSelectCategory}:Props) => {
+
+const Categories = () => {
     const {data, isLoading, error} = useCategories()
+    const selectedCategoryId = useBookQueryStore(s=>s.bookQuery.categoryId)
+    const setSelectedCategoryId = useBookQueryStore(s=>s.setCategoryId)
     if(error) return null;
     if(isLoading) return <Spinner/>
   return (
@@ -16,7 +16,7 @@ const Categories = ({selectedCategoryId,onSelectCategory}:Props) => {
         "none">
           <HStack>
             <Image objectFit='cover' boxSize="32px" borderRadius="10px" src={category.image_background}/>
-            <Button  width='100%' whiteSpace='normal' justifyContent='flex-start' fontSize="lg" variant='ghost' fontWeight={category.id==selectedCategoryId?'bold':'normal'} onClick={()=>onSelectCategory(category)}>{category.name}
+            <Button  width='100%' whiteSpace='normal' justifyContent='flex-start' fontSize="lg" variant='ghost' fontWeight={category.id==selectedCategoryId?'bold':'normal'} onClick={()=>setSelectedCategoryId(category.id)}>{category.name}
             </Button>
           </HStack>
            </ListItem>)}

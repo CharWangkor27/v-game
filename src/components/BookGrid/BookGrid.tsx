@@ -1,22 +1,17 @@
 
-
-import useGames from "../../hooks/useBooks";
 import {  SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import GameCardSkeleton from "../BookCardSkeleton/BookCardSkeleton";
 import GameCardContainer from "../BookCardContainer/BookCardContainer";
-import type { BookQuery } from "@/App";
 import BookCard from "../BookCard/BookCard";
 import React from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import BookCardContainer from "../BookCardContainer/BookCardContainer";
-
-interface Props{
-  bookQuery:BookQuery 
-}
+import useBooks from "../../hooks/useBooks";
 
 
-const BookGrid = ({bookQuery}:Props) => {
-    const {data, error, isLoading,fetchNextPage,hasNextPage} = useGames(bookQuery)
+
+const BookGrid = () => {
+    const {data, error, isLoading,fetchNextPage,hasNextPage} = useBooks()
     const skeletons = [1,2,3,4,5,6];
     const fetchBookCount = data?.pages.reduce((total,page)=>total+page.results.length,0) || 0;
   return (
