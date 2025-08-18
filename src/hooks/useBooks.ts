@@ -8,9 +8,11 @@ import useBookQueryStore from "../store";
 export interface Book{
   id: number;
   name: string;
+  description_raw: string;
   background_image:string;
   metacritic : number;
   rating_top: number;
+  slug:string;
 };
 
 const apiClient = new APIClient<Book>('/games');

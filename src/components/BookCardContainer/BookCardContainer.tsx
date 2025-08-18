@@ -7,7 +7,10 @@ interface Props{
 
 const BookCardContainer = ({children}:Props) => {
   return (
-    <Box gap ="2" borderRadius={10} overflow="hidden">
+    <Box  _hover={{
+          transform: 'scale(1.03)',
+          transition: 'transform 0.15s ease-in'
+        }} gap ="2" borderRadius={10} overflow="hidden">
         {children}
     </Box>
   )
