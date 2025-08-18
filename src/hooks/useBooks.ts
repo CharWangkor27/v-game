@@ -4,16 +4,8 @@ import {  useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../components/sevices/api-client";
 import ms from "ms";
 import useBookQueryStore from "../store";
+import type { Book } from "../entities/Book";
 
-export interface Book{
-  id: number;
-  name: string;
-  description_raw: string;
-  background_image:string;
-  metacritic : number;
-  rating_top: number;
-  slug:string;
-};
 
 const apiClient = new APIClient<Book>('/games');
 

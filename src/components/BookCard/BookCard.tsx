@@ -1,4 +1,4 @@
-import type { Book } from "@/hooks/useBooks"
+import type { Book } from "@/entities/Book"
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react"
 import CriticScore from "../CiticScore/CriticScore"
 import { Link } from "react-router-dom"

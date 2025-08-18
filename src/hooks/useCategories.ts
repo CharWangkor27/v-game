@@ -2,14 +2,10 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../components/sevices/api-client";
 import ms from 'ms'
+import type { Category } from "../entities/Category";
 
 
 const apiCLient  = new APIClient<Category>('/genres')
-export interface Category{
-    id: number;
-    name: string;
-    image_background: string;
-}
 const useCategories = () =>useQuery({
     queryKey: ['genres'],
     queryFn: apiCLient.getAll,
