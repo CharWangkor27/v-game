@@ -1,7 +1,10 @@
 
-import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { Heading,  Spinner} from "@chakra-ui/react";
 import useBook from "../hooks/useBook";
 import { useParams } from "react-router-dom"
+import ExpandableText from "../components/ExpandableText/ExpandableText";
+
+import BookAttribute from "../components/BookAttribute";
 
 
 const BookDetail = () => {
@@ -14,7 +17,8 @@ const BookDetail = () => {
   return (
     <>
     <Heading>{book.name}</Heading>
-    <Text>{book.description_raw}</Text>
+    <ExpandableText>{book.description_raw}</ExpandableText>
+    <BookAttribute book={book}/>
     </>
   )
 }
